@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -20,7 +21,7 @@ namespace FastSql
         /// </summary>
         /// <param name="DataReader">SqlDataReader</param>
         /// <returns></returns>
-        public static List<T> ToList<T>(this SqlDataReader DataReader) where T : class, new()
+        public static List<T> ToList<T>(this DbDataReader DataReader) where T : class, new()
         {
             List<T> result = null;
             Type type = typeof(T);
@@ -51,7 +52,7 @@ namespace FastSql
         /// </summary>
         /// <param name="DataReader">DataReader</param>
         /// <returns></returns>
-        public static T ToModel<T>(this SqlDataReader DataReader) where T : class, new()
+        public static T ToModel<T>(this DbDataReader DataReader) where T : class, new()
         {
             T result = default(T);
             Type type = typeof(T);

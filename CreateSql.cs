@@ -21,7 +21,7 @@ namespace FastSql
 
         private readonly T mode;
 
-        public CreateSql(string table=null)
+        public CreateSql(string table = null)
         {
             mode = default(T);
             Sqlbuilder = new StringBuilder();
@@ -34,7 +34,7 @@ namespace FastSql
             {
                 TableName = table;
             }
-           
+
             pro = _type.GetProperties();
 
         }
@@ -67,20 +67,47 @@ namespace FastSql
         }
 
         /// <summary>
-        /// 插入数据SQL
+        ///  插入数据SQL
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="mode"></param>
+        /// <param name="mark">默认SQL参数： @</param>
+        /// <param name="haskey">是否存在主键：true</param>
         /// <returns></returns>
-        public CreateSql<T> Insert(string mark = "@")
+        public CreateSql<T> Insert(string mark = "@", bool haskey = true)
         {
             string sqlstr = "INSERT INTO [{2}]({0}) VALUES({1})";
             var sb = new StringBuilder();
             var pb = new StringBuilder();
+            //获取实体主键
+            var key = pro.Where(w => w.GetCustomAttributes(typeof(KeyAttribute), false).Length > 0);
             foreach (var item in pro)
             {
-                sb.Append($"[{item.Name}],");
-                pb.Append($"{mark}{item.Name},");
+                //是否过滤主键
+                if (haskey)
+                {
+                    if (key != null && key.Any())
+                    {
+                        if (key.Select(s => s.Name).Contains(item.Name))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            sb.Append($"[{item.Name}],");
+                            pb.Append($"{mark}{item.Name},");
+                        }
+                    }
+                    else
+                    {
+                        sb.Append($"[{item.Name}],");
+                        pb.Append($"{mark}{item.Name},");
+                    }
+                }
+                else
+                {
+                    sb.Append($"[{item.Name}],");
+                    pb.Append($"{mark}{item.Name},");
+                }
+
             }
             Sqlbuilder.Append(string.Format(sqlstr, sb.ToString().TrimEnd(','), pb.ToString().TrimEnd(','), TableName));
             sb.Clear();
