@@ -55,7 +55,7 @@ namespace FastSql
 
             using (var con = new SqlConnection(DbConfig.SqlConnectString))
             {
-                result = con.Query<T>(createSql.ToSqlString()).AsList();
+                result = con.Query<T>(createSql.ToSqlString()).ToList();
             }
             return result;
 
@@ -73,7 +73,7 @@ namespace FastSql
 
             using (var con = new SqlConnection(DbConfig.SqlConnectString))
             {
-                result = con.Query<T>(createSql.ToSqlString(), param).AsList();
+                result = con.Query<T>(createSql.ToSqlString(), param).ToList();
             }
             return result;
 
