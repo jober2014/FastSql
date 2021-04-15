@@ -4,3 +4,7 @@ D:\Study\WXCORE\FastSql\obj\Debug\FastSql.csprojAssemblyReference.cache
 D:\Study\WXCORE\FastSql\obj\Debug\FastSql.csproj.CoreCompileInputs.cache
 D:\Study\WXCORE\FastSql\obj\Debug\FastSql.dll
 D:\Study\WXCORE\FastSql\obj\Debug\FastSql.pdb
+D:\个人项目\FastSql\obj\Debug\FastSql.csprojAssemblyReference.cache
+D:\个人项目\FastSql\obj\Debug\FastSql.csproj.CoreCompileInputs.cache
+D:\个人项目\FastSql\obj\Debug\FastSql.dll
+D:\个人项目\FastSql\obj\Debug\FastSql.pdb

@@ -43,13 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConditionBuilder.cs" />
     <Compile Include="DapperExt.cs" />
     <Compile Include="DapperTransaction.cs" />
+    <Compile Include="DataBaseType.cs" />
     <Compile Include="DbConfig.cs" />
     <Compile Include="DbUnity.cs" />
     <Compile Include="CreateSql.cs" />
     <Compile Include="DataConver.cs" />
+    <Compile Include="ExpressionVisitor.cs" />
+    <Compile Include="PartialEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlBuild.cs" />
     <Compile Include="SqlMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
