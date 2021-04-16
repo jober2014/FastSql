@@ -83,17 +83,12 @@ namespace FastSql
 
                 case DataBaseType.PostGreSql:
                 case DataBaseType.Oracle:
-
                     result = true;
                     break;
             }
 
             return result;
-
-
         }
-
-
         #endregion
 
     }
