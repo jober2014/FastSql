@@ -1,4 +1,8 @@
 
+数据库连接配制：
+static string constr = "Data Source=10.16.0.201;Initial Catalog=LockTablTest;User ID=sa;Password=sa@123456";
+DbConfig.SetConnect(constr);
+
     1.查询表数据：
 写法1：
 
