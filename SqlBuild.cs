@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FastSql
 {
-   public class SqlBuild
+    public class SqlBuild
     {
         #region Expression 转成 where
         /// <summary>
@@ -52,6 +52,10 @@ namespace FastSql
                 else if (ce is int || ce is long || ce is short || ce is decimal || ce is double || ce is float || ce is bool || ce is byte || ce is sbyte)
                 {
                     conditionBuilder.Arguments[i] = ce.ToString();
+                }
+                else if (ce is Guid)
+                {
+                    conditionBuilder.Arguments[i] = $"'{ce}'";
                 }
                 else if (ce is ValueType)
                 {
