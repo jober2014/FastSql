@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FastSql
+﻿namespace FastSql
 {
-   public class DbConfig
+    public class DbConfig
     {
-        public static string SqlConnectString = ConfigurationManager.ConnectionStrings["SqlConnectString"].ConnectionString;
+        /// <summary>
+        /// 数据库配制
+        /// </summary>
+        internal static string SqlConnectString { get; private set; }
+
+        /// <summary>
+        /// 设置数据库连接
+        /// </summary>
+        /// <param name="constr"></param>
+        public static void SetConnectString(string constr) {
+
+            SqlConnectString = constr;
+
+        }
     }
 }
